@@ -21,8 +21,8 @@ const SortableItem = ({ item }) => {
   };
 
   const itemClasses = `sortable-item ${item.movable ? 'movable-item' : ''}`;
-  // Extract the rows for this specific item
-  const { rows } = itemDetails[item.id] || { rows: [] };
+  const itemData = itemDetails[item.id] || { rows: [], subItems: {}, showParentItemDetails: true };
+  const { rows, subItems = {}, showParentItemDetails } = itemData;
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes} className={itemClasses}>
@@ -32,21 +32,44 @@ const SortableItem = ({ item }) => {
         </button>
       )}
       <h4 className="item-name">{item.name}</h4>
-      {/* Iterate over each row and render dynamically */}
-      {rows.map((row, index) => {
-        // Retrieve the icon component using the mapping information in config.js
-        const IconComponent = iconMap[row.icon]; // there is no fallback icon, so this will be undefined if the icon is not found;
-        return (
-          <div className="item-details" key={index}>
-            <div className="item-column">{row.number}</div>
-            <div className="item-column">
-              <IconComponent className="icon" />
-            </div>
-            <div className="item-column">{row.weighting}%</div>
+      <div className="item-details-container">
+        {/* Render sub-items if they exist */}
+        {Object.entries(subItems).map(([subItemKey, subItem], index) => (
+          <div key={index} className="sub-block">
+            {subItem.rows.map((row, subIndex) => {
+              const IconComponent = iconMap[row.icon] || null;
+              return (
+                <div className="item-details" key={subIndex}>
+                  <div className="item-column">{row.number}</div>
+                  <div className="item-column">
+                    {IconComponent ? <IconComponent className="icon" /> : <span>No Icon</span>}
+                  </div>
+                  <div className="item-column">{row.weighting}%</div>
+                </div>
+              );
+            })}
           </div>
-        );
-      })}
+        ))}
+        {/* Render parent rows and ensure icon is centered */}
+        {rows.map((row, index) => {
+          const IconComponent = iconMap[row.icon] || null;
+          const parentRowClass = showParentItemDetails ? "item-details" : "icon-centered";
+          return (
+            <div className={parentRowClass} key={index}>
+              {/* Number column */}
+              {showParentItemDetails && <div className="item-column">{index + 1}</div>}
+              {/* Icon column */}
+              <div className="item-column">
+                {IconComponent ? <IconComponent className="icon" /> : <span>No Icon</span>}
+              </div>
+              {/* Weighting column */}
+              {showParentItemDetails && <div className="item-column">{row.weighting}%</div>}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
+
 export default SortableItem;
