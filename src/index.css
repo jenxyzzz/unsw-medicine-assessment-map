@@ -84,6 +84,15 @@ code {
   list-style-type: disc;
 }
 
+.sub-block {
+  padding: 8px;
+  border: 1.5px solid #cdc6b3;
+  background-color: #fcfcf8;
+  margin: 8px;
+  border-radius: 15px; /* Corner radius */
+  box-sizing: border-box;
+}
+
 /* Styles for ItemDetails that wrap around the columns */
 .item-details {
   display: grid;
