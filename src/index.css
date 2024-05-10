@@ -93,11 +93,18 @@ code {
   box-sizing: border-box;
 }
 
+/* Centered icon for when other columns are missing */
+.icon-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr; /* Single column */
+}
+
 /* Styles for ItemDetails that wrap around the columns */
 .item-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Creates three columns of equal width */
-  align-items: stretch; /* Makes each item fill the height */
 }
 
 /* Styles for the item columns */

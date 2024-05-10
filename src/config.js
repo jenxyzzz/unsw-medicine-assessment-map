@@ -13,23 +13,18 @@ export const items = [
       name: "MFAC3502 Surgery",
       category: "discipline",
       movable: true,
-      subItems: [
-        { id: "1a",},
-        { id: "1b",},
-      ]
+      hasSubItems: true,
     },
     { id: 2,
       name: "Elective",
       category: "discipline",
-      movable: false },
+      movable: false,
+      hasSubItems: false, },
     { id: 3,
       name: "MFAC3501 Medicine",
       category: "discipline",
       movable: true,
-      subItems: [
-      { id: "3a", },
-      { id: "3b", },
-    ]
+      hasSubItems: true,
       },
     { id: 4, name: "MFAC3505 Obstetrics and Gynaecology", category: "discipline", movable: true },
     { id: 5, name: "MFAC3506 Children's Health", category: "discipline", movable: true },
@@ -86,7 +81,9 @@ export const itemDetails = {
 //   	]
 // 	},
 1: {
-  rows: [],
+  rows: [
+    {number: 1, icon: "miniCEX", weighting: 10},
+  ],
   subItems: {
     "1a": {
       rows: [
@@ -101,10 +98,12 @@ export const itemDetails = {
         { number: 1, icon: "learningPlan", weighting: 20 },
       ]
     }
-  }
+  },
+  showParentItemDetails: false // set to 'true' or 'false' to show the number and weighting (and dashed lines) of the item that's outside of the sub blocks
 },
 2: {
   rows: [],
+  showParentItemDetails: false
 },
 3: {
   rows: [],
@@ -121,7 +120,8 @@ export const itemDetails = {
 { number: 1, icon: "learningPlan", weighting: 35 },
       ]
     }
-}
+},
+showParentItemDetails: false
 },
 
 
