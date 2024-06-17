@@ -86,8 +86,8 @@ code {
 
 .sub-block {
   padding: 8px;
-  border: 1.5px solid #cdc6b3;
-  background-color: #fcfcf8;
+  border: 1.5px solid #c4c3bc;
+  background-color: #f8f8f5;
   margin: 8px;
   border-radius: 15px; /* Corner radius */
   box-sizing: border-box;
@@ -114,7 +114,7 @@ code {
   flex-direction: column;
   justify-content: center; /* Keeps content centered */
   align-items: center;
-  border-right: 2px dashed #ccc;
+  border-right: 2px dashed #c4c3bc;
   padding: 10px; /* Add padding to the columns */
 }
 

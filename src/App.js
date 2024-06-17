@@ -63,7 +63,7 @@ export default function App() {
       <header className="header">
         <h1 className="h1">Page Title</h1>
         <p className="p">
-          This is an example of assessments for Phase 3 (Year 5 and Year 6) of the Medicine Program in 2024. Depending on your rotation, your schedule will look different. To help you visualize things better, this page allows you to drag and drop elements that can be moved. Non-movable elements will stay put.
+          This is an example of assessments for Phase 3 (Year 5 and Year 6) of the Medicine Program in 2024. Depending on your rotation, your schedule will look different. To help you visualise things better, this page allows you to drag and drop elements that can be moved. Non-movable elements will stay put. Please use this as a visual example only, for more accurate and up-to-date information, please refer to your program and course guides.
         </p>
       </header>
       <DndContext
