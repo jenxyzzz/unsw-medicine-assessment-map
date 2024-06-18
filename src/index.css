@@ -10,6 +10,7 @@
 .header {
   text-align: center;
   margin: 80px;
+  max-width: 1000px;
 }
 
 .h1 {
@@ -20,6 +21,12 @@
 
 .p {
   text-align: left;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.pRight {
+  text-align: right;
   font-size: 1.2rem;
   margin-top: 10px;
 }
@@ -170,4 +177,31 @@ code {
   height: 40px;
   color: #24688a;
   display: flex;
+}
+
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-separator {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.item-details-container .item-column {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-tooltip {
+  background-color: white !important;
+  color: black !important;
+  padding: 10px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  white-space: pre-wrap !important; /* Allows text to wrap */
+  max-width: 200px; /* Adjust the max width as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

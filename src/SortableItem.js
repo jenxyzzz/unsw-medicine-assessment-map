@@ -2,6 +2,7 @@ import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { itemDetails, iconMap } from './config';
 import { CSS } from '@dnd-kit/utilities';
+import { Tooltip as ReactTooltip } from 'react-tooltip';
 import './index.css';
 
 const SortableItem = ({ item }) => {
@@ -24,6 +25,30 @@ const SortableItem = ({ item }) => {
   const itemData = itemDetails[item.id] || { rows: [], subItems: {}, showParentItemDetails: true };
   const { rows, subItems = {}, showParentItemDetails } = itemData;
 
+  const renderIcons = (icons) => {
+    return (
+      <span className="icon-container">
+        {icons.map((icon, index) => {
+          const IconComponent = iconMap[icon].component;
+          const hoverText = iconMap[icon].hoverText;
+          if (!IconComponent) {
+            console.error(`Icon component for ${icon} is not defined.`);
+            return null;
+          }
+          return (
+            <React.Fragment key={index}>
+              <span data-tooltip-id={`tooltip-${item.id}-${index}`} data-tooltip-content={hoverText}>
+                <IconComponent className="icon" />
+              </span>
+              {index < icons.length - 1 && <span className="icon-separator">/</span>}
+              <ReactTooltip id={`tooltip-${item.id}-${index}`} className="custom-tooltip" effect="solid" delayShow={0} />
+            </React.Fragment>
+          );
+        })}
+      </span>
+    );
+  };
+
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes} className={itemClasses}>
       {item.movable && (
@@ -36,37 +61,28 @@ const SortableItem = ({ item }) => {
         {/* Render sub-items if they exist */}
         {Object.entries(subItems).map(([subItemKey, subItem], index) => (
           <div key={index} className="sub-block">
-            {subItem.rows.map((row, subIndex) => {
-              const IconComponent = iconMap[row.icon] || null;
-              return (
-                <div className="item-details" key={subIndex}>
-                  <div className="item-column">{row.number}</div>
-                  <div className="item-column">
-                    {IconComponent ? <IconComponent className="icon" /> : <span>No Icon</span>}
-                  </div>
-                  <div className="item-column">{row.weighting}%</div>
-                </div>
-              );
-            })}
+            {subItem.rows.map((row, subIndex) => (
+              <div className="item-details" key={subIndex}>
+                <div className="item-column">{row.number}</div>
+                <div className="item-column icons">{renderIcons(row.icons)}</div>
+                <div className="item-column">{row.weighting}%</div>
+              </div>
+            ))}
           </div>
         ))}
         {/* Render parent rows and ensure icon is centered */}
-        {rows.map((row, index) => {
-          const IconComponent = iconMap[row.icon] || null;
-          const parentRowClass = showParentItemDetails ? "item-details" : "icon-centered";
-          return (
-            <div className={parentRowClass} key={index}>
-              {/* Number column */}
-              {showParentItemDetails && <div className="item-column">{index + 1}</div>}
-              {/* Icon column */}
-              <div className="item-column">
-                {IconComponent ? <IconComponent className="icon" /> : <span>No Icon</span>}
-              </div>
-              {/* Weighting column */}
-              {showParentItemDetails && <div className="item-column">{row.weighting}%</div>}
+        {rows.map((row, index) => (
+          <div className={showParentItemDetails ? "item-details" : "icon-centered"} key={index}>
+            {/* Number column */}
+            {showParentItemDetails && <div className="item-column">{index + 1}</div>}
+            {/* Icon column */}
+            <div className="item-column icons">
+              {renderIcons(row.icons)}
             </div>
-          );
-        })}
+            {/* Weighting column */}
+            {showParentItemDetails && <div className="item-column">{row.weighting}%</div>}
+          </div>
+        ))}
       </div>
     </div>
   );
