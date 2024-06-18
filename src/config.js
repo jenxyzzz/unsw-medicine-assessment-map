@@ -110,7 +110,7 @@ export const iconMap = {
   logBook: { component: FaListCheck, hoverText: "Log book." },
   observedExperiences: { component: FaRegEye, hoverText: "Observed experiences." },
   managementVivaExam: { component: GiDiscussion, hoverText: "Management viva exam." },
-  MCQ: { component: MdQuiz, hoverText: "MCQ." }
+  MCQ: { component: MdQuiz, hoverText: "You may be required to complete an assessment of your knowledge relating to the course. This could be in the form of a written paper or online quiz. Each course guide will provide further information. Furthermore, the Phase Integrated Clinical Examination will also provide the opportunity to assess your ability to integrate knowledge from the different disciplines." }
 };
 
 export const itemDetails = {

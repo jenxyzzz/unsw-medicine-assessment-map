@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/unsw-medicine-assessment-map/static/css/main.ff89dfd6.css",
-    "main.js": "/unsw-medicine-assessment-map/static/js/main.05381331.js",
+    "main.css": "/unsw-medicine-assessment-map/static/css/main.a5de26db.css",
+    "main.js": "/unsw-medicine-assessment-map/static/js/main.f6a6009b.js",
     "static/js/453.d1a5678c.chunk.js": "/unsw-medicine-assessment-map/static/js/453.d1a5678c.chunk.js",
     "index.html": "/unsw-medicine-assessment-map/index.html",
-    "main.ff89dfd6.css.map": "/unsw-medicine-assessment-map/static/css/main.ff89dfd6.css.map",
-    "main.05381331.js.map": "/unsw-medicine-assessment-map/static/js/main.05381331.js.map",
+    "main.a5de26db.css.map": "/unsw-medicine-assessment-map/static/css/main.a5de26db.css.map",
+    "main.f6a6009b.js.map": "/unsw-medicine-assessment-map/static/js/main.f6a6009b.js.map",
     "453.d1a5678c.chunk.js.map": "/unsw-medicine-assessment-map/static/js/453.d1a5678c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff89dfd6.css",
-    "static/js/main.05381331.js"
+    "static/css/main.a5de26db.css",
+    "static/js/main.f6a6009b.js"
   ]
 }
